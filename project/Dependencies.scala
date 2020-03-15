@@ -192,11 +192,7 @@ object Dependencies {
         Provided.activation // dockerClient needs javax.activation.DataSource in JDK 11+
       )
 
-  val actorTestkitTyped = l ++= Seq(
-        Provided.logback,
-        Provided.junit,
-        Provided.scalatest,
-        Test.scalatestJUnit)
+  val actorTestkitTyped = l ++= Seq(Provided.logback, Provided.junit, Provided.scalatest, Test.scalatestJUnit)
 
   val remoteDependencies = Seq(netty, aeronDriver, aeronClient)
   val remoteOptionalDependencies = remoteDependencies.map(_ % "optional")
@@ -238,12 +234,7 @@ object Dependencies {
         Test.commonsIo,
         Test.commonsCodec)
 
-  val persistenceQuery = l ++= Seq(
-        Test.scalatest,
-        Test.junit,
-        Test.commonsIo,
-        Provided.levelDB,
-        Provided.levelDBNative)
+  val persistenceQuery = l ++= Seq(Test.scalatest, Test.junit, Test.commonsIo, Provided.levelDB, Provided.levelDBNative)
 
   val persistenceTck = l ++= Seq(
         Test.scalatest.withConfigurations(Some("compile")),
@@ -277,7 +268,7 @@ object Dependencies {
 
   val docs = l ++= Seq(Test.scalatest, Test.junit, Docs.sprayJson, Docs.gson, Provided.levelDB)
 
-  val benchJmh = l ++= Seq(Provided.levelDB, Provided.levelDBNative, Compile.jctools)
+  val benchJmh = l ++= Seq(logback, Provided.levelDB, Provided.levelDBNative, Compile.jctools)
 
   // akka stream
 
